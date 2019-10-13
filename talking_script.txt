@@ -1,0 +1,52 @@
+Hi Guys,
+THis is vaibhav javadekar. Today we will see the Man of the match prediction for Fifa world cup 2018 as per my approach.
+
+Let us see the problem statement:
+The goal is to predict the Man of the match award using this statistics before the official announcement that will be made right after the match.
+
+
+The data for this problem consists of every match statistics and the final man of the match award to team. The data consists of 128 observations and 27 columns. Each row is a match statistics for a particular team. E.g. team columns states for which team these stats are recorded. goal_scored by that team, no of fouls made by that team etc.    I have also done the pandas profiling on this dataset and we see that there are some colums with missing data over 90%. i.e.  first goal time, own goal, own goal time. 
+
+
+In the current dataset we do not have result of the match at all so we can create a new column 'result' with values like 'Won', Lost and Draw. Also we can merge two columns like yellow red card and red card beacause technically when a player is issued a red card, he has to leave the field immediately. Considering this scenario we are merging these 2 columsn
+
+
+Now Let us look at some EDA. What is the distribution of result among the teams ? or Of all the matches, how many had Result as Won, Lost or Draw ?
+Here we see that there are few results with match as drawn which looks pretty realistic. We are not grouping this by round as it does not matter for man of the match award to the team in which round they are playing
+
+
+How many teams received man of the match when grouped by result ?
+Here we see that there are almost all the the instances when team have won and also claimed man of the match but surprisingly there are also few instances where team have either lost or match drawn even then they have received man of the match.
+
+
+Which are top 5 teams to receive most Man of the Match Awards ?
+Here we see that France, Belgium, Croatio, England and Uraguaya top the list of man of the match awards.
+
+
+Which are top 5 teams to Won the match ?
+Here are we see that Belgium, Croatio, France, Uraguaya , England  top with number of matches won. We can closely observe that for the man of the match and team wons we have same names.
+
+Let us see the correlation of features against man of the match.
+We see here that there are few features which has less or almot no correlation to man of the match i.e. they do not play much role in man of the match prediction. The features are underline in red.
+
+Now let us see the which columns we can remove. Based on te previous analsis we can drop all these columns as they do play much part in man of the match prediction. We have also created used dummification on some categorial features for better model performance.
+
+
+Here we see that target variable is balanced hence we shall use Accuracy to evaluate our model.
+
+
+
+Once the data got ready for model creation, I created 5 and evaluated 5 models. 
+Comparing the above consfusion matrix, we can conclude that we shall use Random Forest algorithm and it provides more accuracy as compared to other algorithms.
+Also we see that we still have the scope of reducing the __False Negatives__ in case of __Random Forest__ . Hence we shall use __recall_score__ method to find the precision of the model. Here we are evaluation 2 different models using Random Forest.
+
+
+Based on the precision, recall and f1 score we can say that both the random forest model will perform same and will produce same result as they have same precision, recall and f1 scores. Let us also look at AUC ROC  cruver
+
+Based on this we can conclude that both the models are best and we can use any of the them for future presictions.
+
+
+Thats all for the video. Thank you.
+
+
+
